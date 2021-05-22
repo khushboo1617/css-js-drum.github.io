@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drum</title>
+    <link rel="stylesheet" href="css/drum.css" >
+</head>
+<body>
+    <div class="keys">
+        <div data-key="65" class="key playing">
+            <kbd>A</kbd>
+            <span class="sound">clap</span>
+        </div>
+
+        <div data-key="66" class="key playing ">
+            <kbd>B</kbd>
+            <span class="sound">drum</span>
+        </div>
+
+        <div data-key="67" class="key" >
+            <kbd>C</kbd>
+            <span class="sound">drum2</span>
+        </div>
+
+        <div data-key="77" class="key">
+            <kbd>M</kbd>
+            <span class="sound">jungle-drum</span>
+        </div>
+
+        <div data-key="75" class="key">
+            <kbd>K</kbd>
+            <span class="sound">clap</span>
+        </div>
+    
+        <div data-key="68" class="key">
+            <kbd>D</kbd>
+            <span class="sound">hihat</span>
+        </div>
+    
+        <div data-key="83" class="key">
+            <kbd>S</kbd>
+            <span class="sound">kick</span>
+        </div>
+
+        <div data-key="70" class="key">
+            <kbd>F</kbd>
+            <span class="sound">openhat</span>
+        </div>
+
+        <div data-key="71" class="key">
+            <kbd>G</kbd>
+            <span class="sound">boom</span>
+        </div>
+    </div>
+
+    <audio data-key="65" src="C:\Users\1617k\Documents\project\javascript-30\drum\1.wav"></audio>
+    <audio data-key="66" src="C:\Users\1617k\Documents\project\javascript-30\drum\2.wav"></audio>
+    <audio data-key="67" src="C:\Users\1617k\Documents\project\javascript-30\drum\4.mp3"></audio>
+    <audio data-key="77" src="C:\Users\1617k\Documents\project\javascript-30\drum\1.wav"></audio>
+    <audio data-key="75" src="C:\Users\1617k\Documents\project\javascript-30\drum\3.wav"></audio>
+    <audio data-key="68" src="C:\Users\1617k\Documents\project\javascript-30\drum\2.wav"></audio>
+    <audio data-key="83" src="C:\Users\1617k\Documents\project\javascript-30\drum\3.wav"></audio>
+    <audio data-key="70" src="C:\Users\1617k\Documents\project\javascript-30\drum\4.mp3"></audio>
+    <audio data-key="71" src="C:\Users\1617k\Documents\project\javascript-30\drum\5.mp3"></audio>
+
+    <script>
+        window.addEventListener('keydown', function(e){
+            const audio=document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            if(!audio) return;
+            audio.currentTime = 0;
+            audio.play();
+            key.classList.add('playing');
+        });
+       
+        function removeTransition(e) {
+            if(e.propertyName!=='transform') return;
+            this.classList.remove('playing');
+            
+        }
+
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key=>key.addEventListener('transitionend' , removeTransition));
+    </script>
+
+</body>
+</html>
